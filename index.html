@@ -4,27 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#101827">
-<title>Аналізатор послідовностей 0–36</title>
+<title>Прогноз і аналіз чисел 0–36</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0d1421}*{box-sizing:border-box}body{margin:0;min-height:100vh}main{max-width:880px;margin:auto;padding:20px 14px 60px}h1{font-size:clamp(24px,5vw,34px);margin:8px 0 8px}h2{font-size:19px;margin:0 0 14px}.muted{color:#a9b9d0;font-size:14px;line-height:1.5}.panel{border:1px solid #2a3a51;background:#152238;border-radius:16px;padding:18px;margin:16px 0}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.field{flex:1;min-width:110px}input,button{font:inherit;border-radius:11px;padding:13px 14px}input{background:#0b172a;border:1px solid #4c6078;color:#fff;width:100%;font-size:20px}button{border:1px solid #526985;background:#20314b;color:#fff;cursor:pointer}button.primary{background:#2168df;border-color:#2168df;font-weight:700}button:focus-visible,input:focus-visible{outline:3px solid #8bbafa;outline-offset:2px}button:disabled{opacity:.55;cursor:default}.info{margin-top:10px;min-height:22px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:#0c1728;border:1px solid #2f4059;border-radius:13px;padding:13px}.small{font-size:13px;color:#a7b8d0}.value{font-size:25px;font-weight:750;margin:7px 0}.prob{color:#92c2ff;font-weight:650}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.track{height:9px;border-radius:20px;background:#28374d;overflow:hidden;margin-top:6px}.fill{background:#579bfa;height:100%}.item{margin:10px 0}.item-head{display:flex;justify-content:space-between;gap:8px}.history{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.chip{padding:5px 9px;background:#293d5a;border-radius:8px;font-size:13px}.warning{border-left:3px solid #e3b454;padding-left:10px}.foot{font-size:12px;color:#9aa9bb;margin-top:20px}@media(max-width:480px){.stats{grid-template-columns:1fr}main{padding:14px 11px 44px}.panel{padding:14px}.value{font-size:23px}} 
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#eaf0fa;background:#0d1421}*{box-sizing:border-box}body{margin:0;min-height:100vh}main{max-width:880px;margin:auto;padding:20px 14px 60px}h1{font-size:clamp(24px,5vw,34px);margin:8px 0 8px}h2{font-size:19px;margin:0 0 14px}.muted{color:#a9b9d0;font-size:14px;line-height:1.5}.panel{border:1px solid #2a3a51;background:#152238;border-radius:16px;padding:18px;margin:16px 0}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.field{flex:1;min-width:110px}input,button{font:inherit;border-radius:11px;padding:13px 14px}input{background:#0b172a;border:1px solid #4c6078;color:#fff;width:100%;font-size:20px}button{border:1px solid #526985;background:#20314b;color:#fff;cursor:pointer}button.primary{background:#2168df;border-color:#2168df;font-weight:700}button:focus-visible,input:focus-visible{outline:3px solid #8bbafa;outline-offset:2px}button:disabled{opacity:.55;cursor:default}.info{margin-top:10px;min-height:22px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{background:#0c1728;border:1px solid #2f4059;border-radius:13px;padding:13px}.small{font-size:13px;color:#a7b8d0}.value{font-size:25px;font-weight:750;margin:7px 0}.prob{color:#92c2ff;font-weight:650}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.track{height:9px;border-radius:20px;background:#28374d;overflow:hidden;margin-top:6px}.fill{background:#579bfa;height:100%}.item{margin:10px 0}.item-head{display:flex;justify-content:space-between;gap:8px}.history{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.chip{padding:5px 9px;background:#293d5a;border-radius:8px;font-size:13px}.warning{border-left:3px solid #e3b454;padding-left:10px}.forecast{border:2px solid #438bff;background:linear-gradient(150deg,#162d4f,#152238)}.forecast .value{font-size:31px}.forecast-tag{color:#aaccff;font-size:12px;font-weight:700;letter-spacing:.07em}.result{border-radius:10px;padding:10px 12px;background:#0b172a;margin-top:12px;font-size:14px;line-height:1.6}.foot{font-size:12px;color:#9aa9bb;margin-top:20px}@media(max-width:480px){.stats{grid-template-columns:1fr}main{padding:14px 11px 44px}.panel{padding:14px}.value{font-size:23px}} 
 </style>
 </head>
 <body><main>
-<header><div class="muted">НАВЧАЛЬНА СТАТИСТИЧНА МОДЕЛЬ</div><h1>Аналізатор чисел 0–36</h1><div class="muted">Модель переходів між результатами з аналізом кольорів, секторів і ліній. Не гарантує передбачення наступного числа.</div></header>
+<header><div class="muted">НАВЧАЛЬНА СТАТИСТИЧНА МОДЕЛЬ</div><h1>Прогноз наступного обертання</h1><div class="muted">Модель переходів між результатами з аналізом кольорів, секторів і ліній. Не гарантує передбачення наступного числа.</div></header>
 <section class="panel"><h2>Додати результат</h2><form id="entry" class="row"><div class="field"><label class="small" for="number">Число від 0 до 36</label><input id="number" type="number" inputmode="numeric" min="0" max="36" step="1" required placeholder="Наприклад, 16"></div><button class="primary" type="submit">Додати</button></form><div id="message" class="info muted" role="status"></div><div class="row"><button id="undo" type="button">Скасувати останнє</button><button id="export" type="button">Експорт історії</button><label for="import" class="small" style="cursor:pointer;padding:12px;border:1px solid #526985;border-radius:11px">Імпорт TXT <input id="import" type="file" accept=".txt,text/plain" hidden></label><button id="clear" type="button">Очистити</button></div></section>
-<section class="panel"><h2>Оцінка наступного результату</h2><div class="cards" id="cards"></div><p id="warning" class="muted warning"></p></section>
-<section class="panel"><h2>Розподіл імовірностей</h2><div class="stats"><div><h3>Кольори</h3><div id="colors"></div></div><div><h3>Сектори</h3><div id="sectors"></div></div><div><h3>Лінії</h3><div id="lines"></div></div><div><h3>5 чисел за моделлю</h3><div id="top"></div></div></div></section>
+<section class="panel forecast"><div class="forecast-tag">ПРОГНОЗ НА НАСТУПНЕ ОБЕРТАННЯ</div><h2 id="nextHeading" style="margin-top:8px">Введіть результат</h2><div class="cards" id="cards"></div><p id="warning" class="muted warning"></p><div id="feedback" class="result" aria-live="polite"></div><div id="score" class="muted" style="margin-top:10px"></div></section>
+<section class="panel"><h2>Чому модель зробила такий прогноз</h2><p class="muted">Нижче — повний розподіл розрахункових імовірностей саме наступного обертання, а не просто відсотки появи в минулому.</p><div class="stats"><div><h3>Кольори</h3><div id="colors"></div></div><div><h3>Сектори</h3><div id="sectors"></div></div><div><h3>Лінії</h3><div id="lines"></div></div><div><h3>5 чисел за моделлю</h3><div id="top"></div></div></div></section>
 <section class="panel"><h2>Історія</h2><div class="muted" id="count"></div><div class="history" id="history"></div><div class="muted" style="margin-top:12px">Історія зберігається тільки в браузері цього пристрою. Для перенесення використовуйте експорт та імпорт TXT.</div></section>
-<p class="foot">Модель використовує згладжування та експоненційне зменшення ваги давніх подій. Навіть якщо категорія має найбільшу оцінку, це не означає, що вона обов'язково з'явиться наступною.</p>
+<p class="foot">Показані категорії — окремі статистичні прогнози й можуть не збігатися з кольором/сектором прогнозованого числа. Статистика минулих обертань сама по собі не доводить передбачуваності майбутнього. Модель використовує згладжування та експоненційне зменшення ваги давніх подій. Навіть якщо категорія має найбільшу оцінку, це не означає, що вона обов'язково з'явиться наступною.</p>
 </main><script>
 'use strict';
 const KEY='roulette_uk_history_v1';
+const CHECK_KEY='roulette_uk_forecast_checks_v2';
 const reds=new Set([1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]);
 const byColor=n=>n===0?0:(reds.has(n)?1:2);
 const bySector=n=>n===0?0:Math.floor((n-1)/12)+1;
 const byLine=n=>n===0?0:(n-1)%3+1;
 const identity=n=>n;
 let history=[];
+let checks=[];
+try{const saved=JSON.parse(localStorage.getItem(CHECK_KEY)||'[]');if(Array.isArray(saved))checks=saved.filter(x=>x&&typeof x==='object'&&Number.isInteger(x.actual))}catch(e){checks=[]}
 try{const h=JSON.parse(localStorage.getItem(KEY)||'[]');if(Array.isArray(h))history=h.filter(n=>Number.isInteger(n)&&n>=0&&n<=36)}catch(e){history=[]}
 const $=id=>document.getElementById(id);
 const fmt=n=>(100*n).toLocaleString('uk-UA',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
@@ -43,15 +46,26 @@ function calculate(group,count,prior1,prior2){
  return {p,singles,pairs};
 }
 function rank(p,start=0){return Array.from({length:p.length-start},(_,i)=>i+start).sort((a,b)=>p[b]-p[a]||a-b)}
+function forecast(){
+ const num=calculate(identity,37,4,3),col=calculate(byColor,3,8,6),sec=calculate(bySector,4,9,7),lin=calculate(byLine,4,9,7);
+ return {num,col,sec,lin,number:rank(num.p)[0],color:rank(col.p)[0],sector:rank(sec.p)[0],line:rank(lin.p)[0]};
+}
+const colorNames=['Зелений (0)','Червоний','Чорний'];
+function storeChecks(){try{localStorage.setItem(CHECK_KEY,JSON.stringify(checks))}catch(e){}}
+
 function progress(target,labels,p,order){target.replaceChildren();for(const i of order){const el=document.createElement('div');el.className='item';const head=document.createElement('div');head.className='item-head';const left=document.createElement('span');left.textContent=labels[i];const right=document.createElement('span');right.textContent=fmt(p[i]);head.append(left,right);const track=document.createElement('div');track.className='track';const fill=document.createElement('div');fill.className='fill';fill.style.width=(p[i]*100)+'%';track.append(fill);el.append(head,track);target.append(el)}}
 function render(){
  $('count').textContent='Усього введено: '+history.length;
  $('undo').disabled=!history.length;$('export').disabled=!history.length;$('clear').disabled=!history.length;
  $('history').replaceChildren();for(const n of history.slice(-50).reverse()){const c=document.createElement('span');c.className='chip';c.textContent=n;$('history').append(c)}
- const num=calculate(identity,37,4,3),col=calculate(byColor,3,8,6),sec=calculate(bySector,4,9,7),lin=calculate(byLine,4,9,7);
- const nr=rank(num.p),cr=rank(col.p,1),sr=rank(sec.p,1),lr=rank(lin.p,1);
- const data=[['Число',nr[0],num.p[nr[0]]],['Колір',['Зелений (0)','Червоний','Чорний'][cr[0]],col.p[cr[0]]],['Сектор',sr[0],sec.p[sr[0]]],['Лінія',lr[0],lin.p[lr[0]]]];
+ const f=forecast();
+ const {num,col,sec,lin}=f;
+ const nr=rank(num.p),cr=rank(col.p),sr=rank(sec.p),lr=rank(lin.p);
+ const data=[['Число',nr[0],num.p[nr[0]]],['Колір',colorNames[cr[0]],col.p[cr[0]]],['Сектор',sr[0],sec.p[sr[0]]],['Лінія',lr[0],lin.p[lr[0]]]];
+ $('nextHeading').textContent=history.length?'Після числа '+history.at(-1)+' — прогноз для обертання № '+(history.length+1):'Введіть перший результат';
  $('cards').replaceChildren();for(const [label,value,prob] of data){const c=document.createElement('div');c.className='card';const l=document.createElement('div');l.className='small';l.textContent=label;const v=document.createElement('div');v.className='value';v.textContent=history.length?value:'—';const p=document.createElement('div');p.className='prob';p.textContent=history.length?fmt(prob):'Немає даних';c.append(l,v,p);$('cards').append(c)}
+ $('feedback').textContent=checks.length?(()=>{const c=checks.at(-1);const found=[];if(c.number===c.actual)found.push('число');if(c.color===byColor(c.actual))found.push('колір');if(c.sector===bySector(c.actual))found.push('сектор');if(c.line===byLine(c.actual))found.push('лінію');return 'Перевірка попереднього прогнозу: випало '+c.actual+'. Збіглися: '+(found.join(', ')||'жодна категорія')+'.'})():'Після другого введення тут буде перевірка попереднього прогнозу.';
+ $('score').textContent=checks.length?'Перевірено прогнозів: '+checks.length+'. Точність числа: '+fmt(checks.filter(c=>c.number===c.actual).length/checks.length)+', кольору: '+fmt(checks.filter(c=>c.color===byColor(c.actual)).length/checks.length)+', сектора: '+fmt(checks.filter(c=>c.sector===bySector(c.actual)).length/checks.length)+', лінії: '+fmt(checks.filter(c=>c.line===byLine(c.actual)).length/checks.length)+'.':'Для оцінки реальної точності накопичуйте перевірені прогнози.';
  $('warning').textContent=!history.length?'Введіть перше число, щоб почати аналіз.':`Останнє число: ${history.at(-1)}. Зважених переходів після нього: ${num.singles.toFixed(1)}; збігів останньої пари: ${num.pairs.toFixed(1)}. ${num.singles<5?'Даних для цього переходу мало — оцінка нестійка.':'Оцінки залежать від наявної історії та можуть не змінюватися після кожного введення.'}`;
  progress($('colors'),['Зелений (0)','Червоний','Чорний'],col.p,[0,1,2]);
  progress($('sectors'),['Нуль (0)','1 (1–12)','2 (13–24)','3 (25–36)'],sec.p,[0,1,2,3]);
@@ -59,10 +73,10 @@ function render(){
  progress($('top'),Array.from({length:37},(_,i)=>'Число '+i),num.p,nr.slice(0,5));
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(history));$('message').textContent='Історію збережено на цьому пристрої.'}catch(e){$('message').textContent='Не вдалося зберегти: можливо, вимкнене сховище браузера.'}render()}
-$('entry').addEventListener('submit',e=>{e.preventDefault();const n=Number($('number').value);if(!Number.isInteger(n)||n<0||n>36){$('message').textContent='Введіть ціле число від 0 до 36.';return}history.push(n);$('number').value='';save();$('number').focus()});
-$('undo').addEventListener('click',()=>{if(history.length){history.pop();save()}});
-$('clear').addEventListener('click',()=>{if(confirm('Видалити всю історію на цьому пристрої?')){history=[];save()}});
+$('entry').addEventListener('submit',e=>{e.preventDefault();const n=Number($('number').value);if(!Number.isInteger(n)||n<0||n>36){$('message').textContent='Введіть ціле число від 0 до 36.';return}if(history.length){const f=forecast();checks.push({actual:n,number:f.number,color:f.color,sector:f.sector,line:f.line});storeChecks()}history.push(n);$('number').value='';save();$('number').focus()});
+$('undo').addEventListener('click',()=>{if(history.length){history.pop();if(checks.length)checks.pop();storeChecks();save()}});
+$('clear').addEventListener('click',()=>{if(confirm('Видалити всю історію на цьому пристрої?')){history=[];checks=[];storeChecks();save()}});
 $('export').addEventListener('click',()=>{const blob=new Blob([history.join('\n')+'\n'],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='roulette_history.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
-$('import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;const txt=await file.text();const items=txt.trim().split(/\s+/);const parsed=items.map(Number);if(items.length===1&&!txt.trim()){history=[];save()}else if(parsed.every(n=>Number.isInteger(n)&&n>=0&&n<=36)){if(confirm(`Завантажити ${parsed.length} чисел? Поточну історію буде замінено.`)){history=parsed;save()}}else $('message').textContent='Помилка: файл має містити тільки числа 0–36, по одному в рядку.';e.target.value=''});
+$('import').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;const txt=await file.text();const items=txt.trim().split(/\s+/);const parsed=items.map(Number);if(items.length===1&&!txt.trim()){history=[];checks=[];storeChecks();save()}else if(parsed.every(n=>Number.isInteger(n)&&n>=0&&n<=36)){if(confirm(`Завантажити ${parsed.length} чисел? Поточну історію буде замінено.`)){history=parsed;checks=[];storeChecks();save()}}else $('message').textContent='Помилка: файл має містити тільки числа 0–36, по одному в рядку.';e.target.value=''});
 render();
 </script></body></html>
